@@ -24,6 +24,15 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/pseudomuto/protokit"
+  packages = [
+    ".",
+    "utils"
+  ]
+  revision = "c63c13958542d70af1d1ef7826d30b25cd5bf6e9"
+  version = "v0.2.0"
+
+[[projects]]
   name = "github.com/stretchr/testify"
   packages = [
     "assert",
@@ -41,6 +50,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "c73f089a26a0388685f79df3c11d454b1504724a48125fe54eb144d498aece1c"
+  inputs-digest = "9c88ee66ac4c859076868fae797a4e2ff1c069e62d344c19469cf1825a90a518"
   solver-name = "gps-cdcl"
   solver-version = 1

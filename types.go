@@ -221,7 +221,6 @@ type ExtensionDescriptor struct {
 	*descriptor.FieldDescriptorProto
 	Parent   *Descriptor
 	Comments *Comment
-	OneOf    string
 }
 
 // GetComments returns a description of the extension
@@ -303,6 +302,7 @@ type FieldDescriptor struct {
 	*descriptor.FieldDescriptorProto
 	Comments *Comment
 	Message  *Descriptor
+	OneOf    string
 }
 
 // GetComments returns a description of the field
