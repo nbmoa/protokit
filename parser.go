@@ -117,10 +117,10 @@ func parseEnumValues(ctx context.Context, protos []*descriptor.EnumValueDescript
 		longName := fmt.Sprintf("%s.%s", enum.GetLongName(), vd.GetName())
 
 		values[i] = &EnumValueDescriptor{
-			common: newCommon(file, "", longName),
+			common:                   newCommon(file, "", longName),
 			EnumValueDescriptorProto: vd,
-			Enum:     enum,
-			Comments: file.comments.Get(fmt.Sprintf("%s.%d.%d", enum.path, enumValueCommentPath, i)),
+			Enum:                     enum,
+			Comments:                 file.comments.Get(fmt.Sprintf("%s.%d.%d", enum.path, enumValueCommentPath, i)),
 		}
 		if vd.Options != nil {
 			values[i].setOptions(vd.Options)
@@ -233,6 +233,12 @@ func parseMessageFields(ctx context.Context, protos []*descriptor.FieldDescripto
 			Comments:             file.comments.Get(fmt.Sprintf("%s.%d.%d", message.path, messageFieldCommentPath, i)),
 			Message:              message,
 		}
+
+		if fd.OneofIndex != nil {
+			decl := message.GetOneofDecl()
+			fields[i].OneOf = decl[fd.GetOneofIndex()].GetName()
+		}
+
 		if fd.Options != nil {
 			fields[i].setOptions(fd.Options)
 		}
